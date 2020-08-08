@@ -4,6 +4,7 @@ Authentication service built using Go.  Consists of separate administration and 
 This was my first attempt at building a full project using Go and due to my experience with other languages I may have not done things in the way of a true "Gopher".  Any feedback is welcome.
 
 ### Features
+- Versioning
 - Swagger integration
 - Admin role based JWT Middleware
 - Client JWT middleware

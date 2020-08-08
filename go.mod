@@ -1,4 +1,4 @@
-module test
+module github.com/LonnieCoffman/Golang-JWT-Microservice
 
 go 1.14
 

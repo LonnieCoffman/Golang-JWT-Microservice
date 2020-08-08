@@ -10,17 +10,26 @@ import (
 var Config appConfig
 
 type appConfig struct {
-	DB          *gorm.DB
-	DBErr       error
-	SERVER_HOST string
-	SERVER_PORT int
-	DB_HOST     string
-	DB_DRIVER   string
-	DB_USER     string
-	DB_PASS     string
-	DB_NAME     string
-	DB_PORT     int64
-	DB_DSN      string
+	DB                         *gorm.DB
+	DBErr                      error
+	SERVER_HOST                string
+	SERVER_PORT                int64
+	SWAGGER_ENABLE             bool
+	DB_HOST                    string
+	DB_DRIVER                  string
+	DB_USER                    string
+	DB_PASS                    string
+	DB_NAME                    string
+	DB_PORT                    int64
+	DB_DSN                     string
+	TOKEN_EXPIRE               int64
+	TOKEN_SECRET               string
+	REFRESH_TOKEN_EXPIRE       int64
+	REFRESH_SECRET             string
+	ADMIN_TOKEN_EXPIRE         int64
+	ADMIN_TOKEN_SECRET         string
+	ADMIN_REFRESH_TOKEN_EXPIRE int64
+	ADMIN_REFRESH_SECRET       string
 }
 
 // LoadConfig loads config from files

@@ -1,7 +1,1081 @@
+definitions:
+  swagger.adminCreateAdmin1:
+    properties:
+      email:
+        example: admin@test.com
+        type: string
+      first_name:
+        example: John
+        type: string
+      id:
+        example: 5
+        type: integer
+      last_name:
+        example: Doe
+        type: string
+      role:
+        example: admin
+        type: string
+    type: object
+  swagger.adminCreateAdmin201:
+    properties:
+      data:
+        $ref: '#/definitions/swagger.adminCreateAdmin1'
+        type: object
+      message:
+        example: Created new admin
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
+  swagger.adminCreateAdmin409:
+    properties:
+      message:
+        example: Admin with email already exists
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  swagger.adminCreateAdmin422:
+    properties:
+      message:
+        example: First name is required
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  swagger.adminCreateAdminBody:
+    properties:
+      email:
+        example: admin@test.com
+        type: string
+      first_name:
+        example: John
+        type: string
+      last_name:
+        example: Doe
+        type: string
+      password:
+        example: password
+        type: string
+      role:
+        example: admin
+        type: string
+      status:
+        example: active
+        type: string
+    type: object
+  swagger.adminCreateClient1:
+    properties:
+      email:
+        example: client@test.com
+        type: string
+      first_name:
+        example: John
+        type: string
+      id:
+        example: 5
+        type: integer
+      last_name:
+        example: Doe
+        type: string
+      notes:
+        example: Random text about client
+        type: string
+      phone:
+        example: (702) 867-5309
+        type: string
+      status:
+        example: active
+        type: string
+    type: object
+  swagger.adminCreateClient201:
+    properties:
+      data:
+        $ref: '#/definitions/swagger.adminCreateClient1'
+        type: object
+      message:
+        example: Created new client
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
+  swagger.adminCreateClient409:
+    properties:
+      message:
+        example: Client with email already exists
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  swagger.adminCreateClient422:
+    properties:
+      message:
+        example: First name is required
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  swagger.adminCreateClientBody:
+    properties:
+      email:
+        example: client@test.com
+        type: string
+      first_name:
+        example: John
+        type: string
+      last_name:
+        example: Doe
+        type: string
+      notes:
+        example: Random text about client
+        type: string
+      password:
+        example: password
+        type: string
+      phone:
+        example: (702) 867-5309
+        type: string
+    type: object
+  swagger.adminDeleteAdmin200:
+    properties:
+      message:
+        example: Deleted admin with ID of 13
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
+  swagger.adminDeleteAdmin404:
+    properties:
+      message:
+        example: Active admin not found
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  swagger.adminDeleteAdmin422:
+    properties:
+      message:
+        example: ID in invalid format
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  swagger.adminDeleteClient200:
+    properties:
+      message:
+        example: Deleted client with ID of 13
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
+  swagger.adminDeleteClient404:
+    properties:
+      message:
+        example: Active client not found
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  swagger.adminDeleteClient422:
+    properties:
+      message:
+        example: ID in invalid format
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  swagger.adminEditAdmin200:
+    properties:
+      data:
+        $ref: '#/definitions/swagger.adminCreateAdmin1'
+        type: object
+      message:
+        example: Updated admin
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
+  swagger.adminEditAdmin404:
+    properties:
+      message:
+        example: Active admin not found
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  swagger.adminEditAdmin409:
+    properties:
+      message:
+        example: Email address already in use
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  swagger.adminEditAdmin422:
+    properties:
+      message:
+        example: Email is in an invalid format
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  swagger.adminEditAdminBody:
+    properties:
+      email:
+        example: admin@test.com
+        type: string
+      first_name:
+        example: John
+        type: string
+      last_name:
+        example: Doe
+        type: string
+      password:
+        example: password
+        type: string
+      role:
+        example: admin
+        type: string
+      status:
+        example: active
+        type: string
+    type: object
+  swagger.adminEditClient200:
+    properties:
+      data:
+        $ref: '#/definitions/swagger.adminCreateClient1'
+        type: object
+      message:
+        example: Updated client
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
+  swagger.adminEditClient404:
+    properties:
+      message:
+        example: Active client not found
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  swagger.adminEditClient409:
+    properties:
+      message:
+        example: Email address already in use
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  swagger.adminEditClient422:
+    properties:
+      message:
+        example: Email is in an invalid format
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  swagger.adminEditClientBody:
+    properties:
+      email:
+        example: admin@test.com
+        type: string
+      first_name:
+        example: John
+        type: string
+      last_name:
+        example: Doe
+        type: string
+      notes:
+        example: This is a test note full of random test that is related to this client.
+        type: string
+      password:
+        example: password
+        type: string
+      phone:
+        example: (702) 867-5309
+        type: string
+      status:
+        example: active
+        type: string
+    type: object
+  swagger.adminEditSelfBody:
+    properties:
+      email:
+        example: admin@test.com
+        type: string
+      first_name:
+        example: John
+        type: string
+      last_name:
+        example: Doe
+        type: string
+      password:
+        example: password
+        type: string
+    type: object
+  swagger.adminGetAll1:
+    properties:
+      created_at:
+        example: "2020-08-07T20:12:54Z"
+        type: string
+      email:
+        example: admin@test.com
+        type: string
+      first_name:
+        example: John
+        type: string
+      id:
+        example: 5
+        type: integer
+      last_name:
+        example: Doe
+        type: string
+      role:
+        example: admin
+        type: string
+      status:
+        example: active
+        type: string
+      updated_at:
+        example: "2020-08-07T20:12:54Z"
+        type: string
+    type: object
+  swagger.adminGetAll200:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/swagger.adminGetAll1'
+        type: array
+      message:
+        example: All admins
+        type: string
+      success:
+        example: true
+        type: boolean
+      total_results:
+        example: 1
+        type: integer
+    type: object
+  swagger.adminGetAllClients1:
+    properties:
+      created_at:
+        example: "2020-08-07T20:12:54Z"
+        type: string
+      email:
+        example: admin@test.com
+        type: string
+      first_name:
+        example: John
+        type: string
+      id:
+        example: 5
+        type: integer
+      last_name:
+        example: Doe
+        type: string
+      notes:
+        example: This is a test note full of random test that is related to this client.
+        type: string
+      phone:
+        example: (702) 867-5309
+        type: string
+      status:
+        example: active
+        type: string
+      updated_at:
+        example: "2020-08-07T20:12:54Z"
+        type: string
+    type: object
+  swagger.adminGetAllClients200:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/swagger.adminGetAll1'
+        type: array
+      message:
+        example: All clients
+        type: string
+      success:
+        example: true
+        type: boolean
+      total_results:
+        example: 1
+        type: integer
+    type: object
+  swagger.adminGetByID200:
+    properties:
+      data:
+        $ref: '#/definitions/swagger.adminGetAll1'
+        type: object
+      message:
+        example: Returned admin
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
+  swagger.adminGetByID404:
+    properties:
+      message:
+        example: Admin not found
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  swagger.adminGetByID422:
+    properties:
+      message:
+        example: ID in invalid format
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  swagger.adminGetClientByID200:
+    properties:
+      data:
+        $ref: '#/definitions/swagger.adminGetAllClients1'
+        type: object
+      message:
+        example: Returned client
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
+  swagger.adminGetClientByID404:
+    properties:
+      message:
+        example: Client not found
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  swagger.adminGetClientByID422:
+    properties:
+      message:
+        example: ID in invalid format
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  swagger.adminGetSelf200:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/swagger.adminGetAll1'
+        type: array
+      message:
+        example: Returned admin
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
+  swagger.adminLogin200:
+    properties:
+      access_token:
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTY3NjI3MTcsInJvbGUiOiJhZG1pbiIsInN1YiI6MX0.BepVrGACE5xvkA08cMDptPR0sz5fcKkPfc4NO-oxZRE
+        type: string
+      message:
+        example: Authenticated
+        type: string
+      refresh_token:
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjgyOTUxMTcsInN1YiI6MX0.uS2sJ52TTe40JSvqwGTigbig186sDmXRl9FB8OeheWw
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
+  swagger.adminLogin401:
+    properties:
+      message:
+        example: Please provide valid credentials
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  swagger.adminLogin403:
+    properties:
+      message:
+        example: Account has been suspended
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  swagger.adminLogin422:
+    properties:
+      message:
+        example: Required fields either missing or empty
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  swagger.adminLoginBody:
+    properties:
+      email:
+        example: test@test.com
+        type: string
+      password:
+        example: password
+        type: string
+    type: object
+  swagger.adminLogout200:
+    properties:
+      message:
+        example: Logged out
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
+  swagger.adminRefresh200:
+    properties:
+      access_token:
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTY3NjI3MTcsInJvbGUiOiJhZG1pbiIsInN1YiI6MX0.BepVrGACE5xvkA08cMDptPR0sz5fcKkPfc4NO-oxZRE
+        type: string
+      message:
+        example: Token refreshed
+        type: string
+      refresh_token:
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjgyOTUxMTcsInN1YiI6MX0.uS2sJ52TTe40JSvqwGTigbig186sDmXRl9FB8OeheWw
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
+  swagger.adminRefresh401:
+    properties:
+      message:
+        example: Invalid token
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  swagger.adminRefresh403:
+    properties:
+      message:
+        example: Account has been suspended
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  swagger.adminRefresh422:
+    properties:
+      message:
+        example: Required fields either missing or empty
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  swagger.adminRefreshBody:
+    properties:
+      refresh_token:
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjgzNjAyOTIsInN1YiI6MX0.5ddhUgEXlnN3NZH0yrHH1uGspHDFnqevA18BVy5dFDY
+        type: string
+    type: object
 info:
   contact: {}
   license: {}
 paths:
+  /admin:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.adminGetSelf200'
+      security:
+      - bearerAuth: []
+      summary: Get own details
+      tags:
+      - Admin
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: JSON request body<br><br>* All fields are optional.<br>** If field left blank it will not be updated.
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/swagger.adminEditSelfBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.adminEditAdmin200'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/swagger.adminEditAdmin409'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/swagger.adminEditAdmin422'
+      security:
+      - bearerAuth: []
+      summary: Edit own details
+      tags:
+      - Admin
+  /admin/login:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: JSON request body
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/swagger.adminLoginBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.adminLogin200'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/swagger.adminLogin401'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/swagger.adminLogin403'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/swagger.adminLogin422'
+      summary: Administrator Login
+      tags:
+      - 'Admin: Authentication'
+  /admin/logout:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.adminLogout200'
+      security:
+      - bearerAuth: []
+      summary: Administrator Logout
+      tags:
+      - 'Admin: Authentication'
+  /admin/refresh:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: JSON request body
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/swagger.adminRefreshBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.adminRefresh200'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/swagger.adminRefresh401'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/swagger.adminRefresh403'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/swagger.adminRefresh422'
+      summary: Administrator Refresh Token
+      tags:
+      - 'Admin: Authentication'
+  /admins:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.adminGetAll200'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/swagger.adminLogin401'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/swagger.adminLogin403'
+      security:
+      - bearerAuth: []
+      summary: Get all administrators
+      tags:
+      - 'Admin: SuperAdmin'
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: JSON request body
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/swagger.adminCreateAdminBody'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/swagger.adminCreateAdmin201'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/swagger.adminCreateAdmin409'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/swagger.adminCreateAdmin422'
+      security:
+      - bearerAuth: []
+      summary: Create a new administrator
+      tags:
+      - 'Admin: SuperAdmin'
+  /admins/{id}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: Admin ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.adminDeleteAdmin200'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/swagger.adminDeleteAdmin404'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/swagger.adminDeleteAdmin422'
+      security:
+      - bearerAuth: []
+      summary: '"Soft" delete an administrator'
+      tags:
+      - 'Admin: SuperAdmin'
+    get:
+      parameters:
+      - description: Admin ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.adminGetByID200'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/swagger.adminGetByID404'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/swagger.adminGetByID422'
+      security:
+      - bearerAuth: []
+      summary: Get administrator by ID
+      tags:
+      - 'Admin: SuperAdmin'
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Admin ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: JSON request body<br><br>* All fields are optional.<br>** If field left blank it will not be updated.
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/swagger.adminEditAdminBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.adminEditAdmin200'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/swagger.adminEditAdmin404'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/swagger.adminEditAdmin409'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/swagger.adminEditAdmin422'
+      security:
+      - bearerAuth: []
+      summary: Edit an administrator
+      tags:
+      - 'Admin: SuperAdmin'
+  /clients:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.adminGetAllClients200'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/swagger.adminGetClientByID404'
+      security:
+      - bearerAuth: []
+      summary: Get all clients
+      tags:
+      - Admin
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: JSON request body<br><br>* Phone is optional<br>** Notes is optional
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/swagger.adminCreateClientBody'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/swagger.adminCreateClient201'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/swagger.adminCreateClient409'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/swagger.adminCreateClient422'
+      security:
+      - bearerAuth: []
+      summary: Create a new client
+      tags:
+      - Admin
+  /clients/{id}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: Client ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.adminDeleteClient200'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/swagger.adminDeleteClient404'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/swagger.adminDeleteClient422'
+      security:
+      - bearerAuth: []
+      summary: '"Soft" delete a client'
+      tags:
+      - 'Admin: SuperAdmin'
+    get:
+      parameters:
+      - description: Admin ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.adminGetClientByID200'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/swagger.adminGetClientByID404'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/swagger.adminGetClientByID422'
+      security:
+      - bearerAuth: []
+      summary: Get client by ID
+      tags:
+      - Admin
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Client ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: JSON request body<br><br>* All fields are optional.<br>** If field left blank it will not be updated.
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/swagger.adminEditClientBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.adminEditClient200'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/swagger.adminEditClient404'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/swagger.adminEditClient409'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/swagger.adminEditClient422'
+      security:
+      - bearerAuth: []
+      summary: Edit a client
+      tags:
+      - Admin
+  /login:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: JSON request body
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/swagger.adminLoginBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.adminLogin200'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/swagger.adminLogin401'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/swagger.adminLogin403'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/swagger.adminLogin422'
+      summary: Client Login
+      tags:
+      - 'Client: Authentication'
+  /logout:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.adminLogout200'
+      security:
+      - bearerAuth: []
+      summary: Client Logout
+      tags:
+      - 'Client: Authentication'
   /ping:
     get:
       consumes:
@@ -12,10 +1086,6 @@ paths:
       responses:
         "200":
           description: OK
-          schema:
-            type: string
-        "500":
-          description: Internal Server Error
           schema:
             type: string
       summary: ping example

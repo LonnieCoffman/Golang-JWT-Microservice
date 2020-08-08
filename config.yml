@@ -1,6 +1,7 @@
 # APPLICATION SETTINGS
 SERVER_HOST: "localhost"
 SERVER_PORT: 8080
+SWAGGER_ENABLE: true
 
 # MYSQL DETAILS
 DB_HOST: "localhost"
@@ -8,3 +9,15 @@ DB_USER: "root"
 DB_PASS: "root"
 DB_NAME: "test"
 DB_PORT: 8889
+
+# USER JWT TOKENS (expire in minutes)
+TOKEN_EXPIRE: 60 # 1 hour
+TOKEN_SECRET: "mysecret"
+REFRESH_TOKEN_EXPIRE: 525600 # 1 year
+REFRESH_SECRET: "myrefreshsecret"
+
+# ADMIN JWT TOKENS (expire in minutes)
+ADMIN_TOKEN_EXPIRE: 60 # 1 hour
+ADMIN_TOKEN_SECRET: "myadminsecret"
+ADMIN_REFRESH_TOKEN_EXPIRE: 525600 # 1 year
+ADMIN_REFRESH_SECRET: "myadminrefreshsecret"

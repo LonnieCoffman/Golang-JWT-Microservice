@@ -12,8 +12,7 @@ import (
 // @Tags API Health
 // @Accept json
 // @Produce json
-// @Success 200 {string} pong
-// @Failure 500 {string} error
+// @Success 200 {string} string
 // @Router /ping [get]
 func Ping(c *gin.Context) {
 	c.JSON(http.StatusOK, "pong")

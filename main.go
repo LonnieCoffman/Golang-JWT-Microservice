@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"log"
-	"test/utils"
 
 	"github.com/LonnieCoffman/Golang-JWT-Microservice/config"
 	"github.com/LonnieCoffman/Golang-JWT-Microservice/docs"
@@ -49,8 +48,8 @@ func main() {
 	}
 
 	// Migrate data into database
-	utils.Migrate()
-	utils.Seed()
+	//utils.Migrate()
+	//utils.Seed()
 
 	log.Println("Successfully connected to database")
 	defer config.Config.DB.Close()

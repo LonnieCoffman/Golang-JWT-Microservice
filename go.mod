@@ -8,7 +8,6 @@ require (
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/gin-gonic/gin v1.6.3
 	github.com/jinzhu/gorm v1.9.15
-	github.com/joho/godotenv v1.3.0
 	github.com/mitchellh/mapstructure v1.3.3 // indirect
 	github.com/pelletier/go-toml v1.8.0 // indirect
 	github.com/satori/go.uuid v1.2.0

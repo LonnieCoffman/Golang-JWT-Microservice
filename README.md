@@ -1,5 +1,11 @@
-## Notes
+## Golang JWT Authentication Microservice
+Authentication service built using Go.  Consists of separate administration and client logins.  Admin login is role based and currently has SuperAdmin and Admin roles.  Uses Gorm, Viper, Gin, JWT-Go and Swagger
 
-- When adding new variables to config.yml make sure they are also defined in config/config.go
-- Update swagger using "swag init -g application.go"
-- Swagger URL: http://SERVER_HOST:SERVER_PORT/swagger/index.html
+This was my first attempt at building a full project using Go and due to my experience with other languages I may have not done things in the way of a true "Gopher".  Any feedback is welcome.
+
+### Features
+- Swagger integration
+- Admin role based JWT Middleware
+- Client JWT middleware
+- Fully separated Admin and Client login system
+- Database migration with sample data

@@ -6,6 +6,7 @@ This was my first attempt at building a full project using Go and due to my expe
 ### Features
 - Versioning
 - Access Tokens and Refresh Tokens
+- Impersonate a client
 - Swagger integration
 - Admin role based JWT Middleware
 - Client JWT middleware

@@ -3,8 +3,9 @@ package models
 import (
 	"fmt"
 	"net/http"
-	"github.com/LonnieCoffman/Golang-JWT-Microservice/config"
 	"time"
+
+	"github.com/LonnieCoffman/Golang-JWT-Microservice/config"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/jinzhu/gorm"
@@ -82,4 +83,11 @@ func (client *Client) CreateTokens(clientSession *ClientSession) error {
 	}
 
 	return nil
+}
+
+// DestroyClientTokens deletes the tokens from the database.  Not returning an error here, since it would be meaningless to a user logging out
+// as they would have already deleted thier stored token and would not be using it in the future.
+func (client *Client) DestroyClientTokens(clientSession *ClientSession) {
+	config.Config.DB.Delete(&clientSession)
+	return
 }

@@ -47,6 +47,6 @@ func groupV1Routes(v1 *gin.RouterGroup) {
 
 	// client - authentication routes
 	v1.POST("/login", v1controllers.ClientLogin)
-	//v1.POST("/refresh", v1controllers.ClientRefresh)
+	// v1.POST("/refresh", v1controllers.ClientRefresh)
 	v1.POST("/logout", auth.Client(), v1controllers.ClientLogout)
 }

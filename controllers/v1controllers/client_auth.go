@@ -1,8 +1,8 @@
 package v1controllers
 
 import (
-	"fmt"
 	"net/http"
+
 	"github.com/LonnieCoffman/Golang-JWT-Microservice/models"
 
 	"github.com/gin-gonic/gin"
@@ -66,13 +66,11 @@ func ClientLogout(c *gin.Context) {
 	client := *(c.Keys["client"].(*models.Client))
 	clientSession := *(c.Keys["clientSession"].(*models.ClientSession))
 
-	fmt.Println(client)
-	fmt.Println(clientSession)
-	// admin.DestroyTokens(&adminSession)
+	client.DestroyClientTokens(&clientSession)
 
-	// // Return JSON response
-	// c.JSON(http.StatusOK, gin.H{
-	// 	"message": "Logged out",
-	// 	"success": true,
-	// })
+	// Return JSON response
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Logged out",
+		"success": true,
+	})
 }

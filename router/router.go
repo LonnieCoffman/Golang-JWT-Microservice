@@ -28,6 +28,7 @@ func groupV1Routes(v1 *gin.RouterGroup) {
 	admin.POST("/login", v1controllers.AdminLogin)
 	admin.POST("/refresh", v1controllers.AdminRefresh)
 	admin.POST("/logout", auth.Admin(), v1controllers.AdminLogout)
+	//admin.POST("/impersonate/:id", auth.Admin(), v1controllers.AdminImpersonate)
 
 	// admin - super admin routes
 	admins.GET("/", auth.SuperAdmin(), v1controllers.AdminGetAll)
@@ -49,4 +50,9 @@ func groupV1Routes(v1 *gin.RouterGroup) {
 	v1.POST("/login", v1controllers.ClientLogin)
 	v1.POST("/refresh", v1controllers.ClientRefresh)
 	v1.POST("/logout", auth.Client(), v1controllers.ClientLogout)
+
+	// client - standard routes
+	v1.GET("/", auth.Client(), v1controllers.ClientGetSelf)
+	v1.PUT("/", auth.Client(), v1controllers.ClientEditSelf)
+
 }

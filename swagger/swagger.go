@@ -329,3 +329,25 @@ type adminEditClient422 struct {
 	Message string `json:"message" example:"Email is in an invalid format"`
 	Success bool   `json:"success" example:"false"`
 }
+
+// CLIENT GET SELF
+type clientGetSelf200 struct {
+	Data    clientEditSelfBody
+	Message string `json:"message" example:"Returned own details"`
+	Success bool   `json:"success" example:"true"`
+}
+
+// CLIENT EDIT SELF
+type clientEditSelfBody struct {
+	FirstName string `json:"first_name" example:"John"`
+	LastName  string `json:"last_name" example:"Doe"`
+	Email     string `json:"email" example:"client@test.com"`
+	Password  string `json:"password" example:"password"`
+	Phone     string `json:"phone" example:"(702) 867-5309"`
+}
+
+type clientEditSelf200 struct {
+	Data    clientEditSelfBody
+	Message string `json:"message" example:"Updated own details"`
+	Success bool   `json:"success" example:"true"`
+}

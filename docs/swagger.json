@@ -5,6 +5,78 @@
         "license": {}
     },
     "paths": {
+        "/": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Get own details",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.clientGetSelf200"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Edit own details",
+                "parameters": [
+                    {
+                        "description": "JSON request body\u003cbr\u003e\u003cbr\u003e* All fields are optional.\u003cbr\u003e** If field left blank it will not be updated.",
+                        "name": "Body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/swagger.clientEditSelfBody"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.clientEditSelf200"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.adminEditAdmin409"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.adminEditAdmin422"
+                        }
+                    }
+                }
+            }
+        },
         "/admin": {
             "get": {
                 "security": [
@@ -1682,6 +1754,65 @@
                 "refresh_token": {
                     "type": "string",
                     "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjgzNjAyOTIsInN1YiI6MX0.5ddhUgEXlnN3NZH0yrHH1uGspHDFnqevA18BVy5dFDY"
+                }
+            }
+        },
+        "swagger.clientEditSelf200": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/swagger.clientEditSelfBody"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "Updated own details"
+                },
+                "success": {
+                    "type": "boolean",
+                    "example": true
+                }
+            }
+        },
+        "swagger.clientEditSelfBody": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "example": "client@test.com"
+                },
+                "first_name": {
+                    "type": "string",
+                    "example": "John"
+                },
+                "last_name": {
+                    "type": "string",
+                    "example": "Doe"
+                },
+                "password": {
+                    "type": "string",
+                    "example": "password"
+                },
+                "phone": {
+                    "type": "string",
+                    "example": "(702) 867-5309"
+                }
+            }
+        },
+        "swagger.clientGetSelf200": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/swagger.clientEditSelfBody"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "Returned own details"
+                },
+                "success": {
+                    "type": "boolean",
+                    "example": true
                 }
             }
         }

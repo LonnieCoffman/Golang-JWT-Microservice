@@ -605,10 +605,96 @@ definitions:
         example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjgzNjAyOTIsInN1YiI6MX0.5ddhUgEXlnN3NZH0yrHH1uGspHDFnqevA18BVy5dFDY
         type: string
     type: object
+  swagger.clientEditSelf200:
+    properties:
+      data:
+        $ref: '#/definitions/swagger.clientEditSelfBody'
+        type: object
+      message:
+        example: Updated own details
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
+  swagger.clientEditSelfBody:
+    properties:
+      email:
+        example: client@test.com
+        type: string
+      first_name:
+        example: John
+        type: string
+      last_name:
+        example: Doe
+        type: string
+      password:
+        example: password
+        type: string
+      phone:
+        example: (702) 867-5309
+        type: string
+    type: object
+  swagger.clientGetSelf200:
+    properties:
+      data:
+        $ref: '#/definitions/swagger.clientEditSelfBody'
+        type: object
+      message:
+        example: Returned own details
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
 info:
   contact: {}
   license: {}
 paths:
+  /:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.clientGetSelf200'
+      security:
+      - bearerAuth: []
+      summary: Get own details
+      tags:
+      - Client
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: JSON request body<br><br>* All fields are optional.<br>** If field left blank it will not be updated.
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/swagger.clientEditSelfBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.clientEditSelf200'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/swagger.adminEditAdmin409'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/swagger.adminEditAdmin422'
+      security:
+      - bearerAuth: []
+      summary: Edit own details
+      tags:
+      - Client
   /admin:
     get:
       produces:

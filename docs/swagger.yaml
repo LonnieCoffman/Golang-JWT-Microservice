@@ -1091,6 +1091,39 @@ paths:
       summary: ping example
       tags:
       - API Health
+  /refresh:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: JSON request body
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/swagger.adminRefreshBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.adminRefresh200'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/swagger.adminRefresh401'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/swagger.adminRefresh403'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/swagger.adminRefresh422'
+      summary: Client Refresh Token
+      tags:
+      - 'Client: Authentication'
 securityDefinitions:
   bearerAuth:
     in: header

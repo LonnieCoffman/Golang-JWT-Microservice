@@ -91,3 +91,46 @@ func (client *Client) DestroyClientTokens(clientSession *ClientSession) {
 	config.Config.DB.Delete(&clientSession)
 	return
 }
+
+// VerifyRefresh godoc
+func (client *Client) VerifyRefresh(clientSession *ClientSession) (int, error) {
+	// email and password cannot be missing or blank
+	if clientSession.RefreshToken == "" {
+		return http.StatusUnprocessableEntity, fmt.Errorf("Required fields either missing or empty")
+	}
+
+	// validate token
+	_, err := jwt.Parse(clientSession.RefreshToken, func(token *jwt.Token) (interface{}, error) {
+		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+			return nil, fmt.Errorf("Unexpected signing method: %v", token.Header["alg"])
+		}
+		return []byte(config.Config.REFRESH_SECRET), nil
+	})
+	if err != nil {
+		return http.StatusUnauthorized, err
+	}
+
+	err = config.Config.DB.Table("client_sessions").Select("*").
+		Joins("JOIN clients on client_sessions.client_id = clients.id").
+		Where("refresh_token = ?", clientSession.RefreshToken).
+		Scan(&client).Scan(&clientSession).
+		Error
+	if err != nil {
+		return http.StatusUnauthorized, fmt.Errorf("Invalid Token")
+	}
+	client.ID = clientSession.ClientID // reinsert client ID
+
+	if client.Status == "suspended" {
+		return http.StatusForbidden, fmt.Errorf("Account has been suspended")
+	}
+
+	if client.Status == "deleted" {
+		return http.StatusUnauthorized, fmt.Errorf("Invalid token")
+	}
+
+	if clientSession.Revoked {
+		return http.StatusUnauthorized, fmt.Errorf("Invalid Token")
+	}
+
+	return 0, nil
+}

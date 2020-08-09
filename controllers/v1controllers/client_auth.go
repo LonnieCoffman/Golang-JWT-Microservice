@@ -74,3 +74,46 @@ func ClientLogout(c *gin.Context) {
 		"success": true,
 	})
 }
+
+// ClientRefresh godoc
+// @Summary Client Refresh Token
+// @Tags Client: Authentication
+// @Accept json
+// @Produce json
+// @Param  Body body swagger.adminRefreshBody true "JSON request body"
+// @Success 200 {object} swagger.adminRefresh200
+// @Failure 401 {object} swagger.adminRefresh401
+// @Failure 403 {object} swagger.adminRefresh403
+// @Failure 422 {object} swagger.adminRefresh422
+// @Router /refresh [post]
+func ClientRefresh(c *gin.Context) {
+	client := models.Client{}
+	clientSession := models.ClientSession{}
+
+	// Verify JSON in correct format
+	if err := c.ShouldBindJSON(&clientSession); err != nil {
+		c.JSON(http.StatusUnprocessableEntity, gin.H{"success": false, "message": "Invalid JSON provided"})
+		return
+	}
+
+	if status, err := client.VerifyRefresh(&clientSession); err != nil {
+		c.JSON(status, gin.H{"success": false, "message": err.Error()})
+		return
+	}
+
+	clientSession.RemoteAddress = c.ClientIP()
+
+	// Create and store access token and refresh token
+	if err := client.CreateTokens(&clientSession); err != nil {
+		c.JSON(http.StatusUnprocessableEntity, gin.H{"success": false, "message": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"access_token":  clientSession.AccessToken,
+		"message":       "Token refreshed",
+		"refresh_token": clientSession.RefreshToken,
+		"success":       true,
+	})
+
+}

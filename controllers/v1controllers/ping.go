@@ -7,7 +7,7 @@ import (
 )
 
 // Ping godoc
-// @Summary ping example
+// @Summary ping returns pong
 // @Description do ping
 // @Tags API Health
 // @Accept json

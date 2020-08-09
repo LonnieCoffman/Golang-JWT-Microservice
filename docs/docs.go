@@ -894,7 +894,7 @@ var doc = `{
                 "tags": [
                     "API Health"
                 ],
-                "summary": "ping example",
+                "summary": "ping returns pong",
                 "responses": {
                     "200": {
                         "description": "OK",

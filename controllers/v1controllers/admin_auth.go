@@ -121,6 +121,7 @@ func AdminRefresh(c *gin.Context) {
 // AdminImpersonate godoc
 // @Summary Impersonate a client
 // @Tags Admin: Authentication
+// @Security bearerAuth
 // @Produce json
 // @Param id path int true "Client ID"
 // @Success 200 {object} swagger.adminImpersonateClient200

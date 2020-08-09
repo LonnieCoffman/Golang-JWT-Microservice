@@ -171,6 +171,11 @@ var doc = `{
         },
         "/admin/impersonate/{id}": {
             "post": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "produces": [
                     "application/json"
                 ],

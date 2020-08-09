@@ -777,6 +777,8 @@ paths:
           description: Unprocessable Entity
           schema:
             $ref: '#/definitions/swagger.adminGetClientByID422'
+      security:
+      - bearerAuth: []
       summary: Impersonate a client
       tags:
       - 'Admin: Authentication'

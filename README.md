@@ -13,4 +13,5 @@ This was my first attempt at building a full project using Go and due to my expe
 - Fully separated Admin and Client login system
 - MySQL Database migration with sample data
 
+***
 ![Swagger](swagger-screenshot.png)

@@ -169,6 +169,46 @@ var doc = `{
                 }
             }
         },
+        "/admin/impersonate/{id}": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin: Authentication"
+                ],
+                "summary": "Impersonate a client",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Client ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.adminImpersonateClient200"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.adminGetClientByID404"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.adminGetClientByID422"
+                        }
+                    }
+                }
+            }
+        },
         "/admin/login": {
             "post": {
                 "consumes": [
@@ -1615,6 +1655,27 @@ var doc = `{
                 "message": {
                     "type": "string",
                     "example": "Returned admin"
+                },
+                "success": {
+                    "type": "boolean",
+                    "example": true
+                }
+            }
+        },
+        "swagger.adminImpersonateClient200": {
+            "type": "object",
+            "properties": {
+                "impersonated_access_token": {
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTY3NjI3MTcsInJvbGUiOiJhZG1pbiIsInN1YiI6MX0.BepVrGACE5xvkA08cMDptPR0sz5fcKkPfc4NO-oxZRE"
+                },
+                "impersonated_refresh_token": {
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjgyOTUxMTcsInN1YiI6MX0.uS2sJ52TTe40JSvqwGTigbig186sDmXRl9FB8OeheWw"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "Impersonated"
                 },
                 "success": {
                     "type": "boolean",

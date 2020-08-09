@@ -497,6 +497,21 @@ definitions:
         example: true
         type: boolean
     type: object
+  swagger.adminImpersonateClient200:
+    properties:
+      impersonated_access_token:
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTY3NjI3MTcsInJvbGUiOiJhZG1pbiIsInN1YiI6MX0.BepVrGACE5xvkA08cMDptPR0sz5fcKkPfc4NO-oxZRE
+        type: string
+      impersonated_refresh_token:
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjgyOTUxMTcsInN1YiI6MX0.uS2sJ52TTe40JSvqwGTigbig186sDmXRl9FB8OeheWw
+        type: string
+      message:
+        example: Impersonated
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
   swagger.adminLogin200:
     properties:
       access_token:
@@ -739,6 +754,32 @@ paths:
       summary: Edit own details
       tags:
       - Admin
+  /admin/impersonate/{id}:
+    post:
+      parameters:
+      - description: Client ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.adminImpersonateClient200'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/swagger.adminGetClientByID404'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/swagger.adminGetClientByID422'
+      summary: Impersonate a client
+      tags:
+      - 'Admin: Authentication'
   /admin/login:
     post:
       consumes:

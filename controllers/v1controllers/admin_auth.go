@@ -2,6 +2,8 @@ package v1controllers
 
 import (
 	"net/http"
+	"strconv"
+
 	"github.com/LonnieCoffman/Golang-JWT-Microservice/models"
 
 	"github.com/gin-gonic/gin"
@@ -114,5 +116,43 @@ func AdminRefresh(c *gin.Context) {
 		"refresh_token": adminSession.RefreshToken,
 		"success":       true,
 	})
+}
 
+// AdminImpersonate godoc
+// @Summary Impersonate a client
+// @Tags Admin: Authentication
+// @Produce json
+// @Param id path int true "Client ID"
+// @Success 200 {object} swagger.adminImpersonateClient200
+// @Failure 404 {object} swagger.adminGetClientByID404
+// @Failure 422 {object} swagger.adminGetClientByID422
+// @Router /admin/impersonate/{id} [post]
+func AdminImpersonate(c *gin.Context) {
+	client := models.Client{}
+	clientSession := models.ClientSession{}
+
+	id, err := strconv.ParseUint(c.Param("id"), 0, 0)
+	if err != nil {
+		c.JSON(http.StatusUnprocessableEntity, gin.H{"message": "ID in invalid format", "success": false})
+		return
+	}
+
+	// Update client fields
+	client.ID = id
+	clientSession.ClientID = id
+	clientSession.RemoteAddress = c.ClientIP()
+
+	// Create and store access token and refresh token
+	if err := client.CreateTokens(&clientSession); err != nil {
+		c.JSON(http.StatusUnprocessableEntity, gin.H{"success": false, "message": err.Error()})
+		return
+	}
+
+	// Return JSON response containing tokens
+	c.JSON(http.StatusOK, gin.H{
+		"impersonated_access_token":  clientSession.AccessToken,
+		"message":                    "Impersonated",
+		"impersonated_refresh_token": clientSession.RefreshToken,
+		"success":                    true,
+	})
 }

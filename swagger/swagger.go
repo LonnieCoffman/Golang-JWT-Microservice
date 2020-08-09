@@ -351,3 +351,11 @@ type clientEditSelf200 struct {
 	Message string `json:"message" example:"Updated own details"`
 	Success bool   `json:"success" example:"true"`
 }
+
+// IMPERSONATED CLIENT
+type adminImpersonateClient200 struct {
+	AccessToken  string `json:"impersonated_access_token" example:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTY3NjI3MTcsInJvbGUiOiJhZG1pbiIsInN1YiI6MX0.BepVrGACE5xvkA08cMDptPR0sz5fcKkPfc4NO-oxZRE"`
+	Message      string `json:"message" example:"Impersonated"`
+	RefreshToken string `json:"impersonated_refresh_token" example:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjgyOTUxMTcsInN1YiI6MX0.uS2sJ52TTe40JSvqwGTigbig186sDmXRl9FB8OeheWw"`
+	Success      bool   `json:"success" example:"true"`
+}

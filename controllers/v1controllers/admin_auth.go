@@ -129,6 +129,7 @@ func AdminRefresh(c *gin.Context) {
 // @Failure 422 {object} swagger.adminGetClientByID422
 // @Router /admin/impersonate/{id} [post]
 func AdminImpersonate(c *gin.Context) {
+	admin := *(c.Keys["admin"].(*models.Admin))
 	client := models.Client{}
 	clientSession := models.ClientSession{}
 
@@ -142,6 +143,13 @@ func AdminImpersonate(c *gin.Context) {
 	client.ID = id
 	clientSession.ClientID = id
 	clientSession.RemoteAddress = c.ClientIP()
+
+	// Does client exist?
+	_, status, err := admin.GetClientByID(id)
+	if err != nil {
+		c.JSON(status, gin.H{"message": err.Error(), "success": false})
+		return
+	}
 
 	// Create and store access token and refresh token
 	if err := client.CreateTokens(&clientSession); err != nil {
